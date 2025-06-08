@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환상의 피자 세계 - [피자 가게 이름]</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #e63946; /* 토마토 레드 */
+            --secondary-color: #f4a261; /* 치즈 오렌지 */
+            --accent-color: #457b9d; /* 올리브 그린 */
+            --dark-color: #1d3557; /* 도우 브라운 */
+            --light-color: #f1faee; /* 크림 화이트 */
+            --text-dark: #333;
+            --text-light: #f1faee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--dark-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        header .logo::before {
+            content: '🍕';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+        }
+
+        header nav ul {
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: var(--text-light);
+            font-weight: 400;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+
+        .hero .container {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        /* Sections General Styling */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--light-color);
+            border-bottom: 1px solid #ddd;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #f8f8f8;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        .about .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            text-align: left;
+            margin-top: 50px;
+        }
+
+        .about .text-block {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about .text-block h3 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* Menu Section */
+        .menu .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: var(--primary-color);
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%); /* A subtle decorative top border */
+        }
+
+        .menu-item h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .menu-item .price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Special Offers Section */
+        .offers {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .offers h2 {
+            color: var(--text-light);
+        }
+
+        .offers .offer-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .offers .offer-card::before {
+            content: '⭐';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .offers .offer-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .offers .offer-card p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #fff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-color);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .contact h2 {
+            color: var(--text-light);
+        }
+
+        .contact .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .contact-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .social-links a {
+            color: var(--text-light);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">환상의 피자</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#about">소개</a></li>
+                    <li><a href="#menu">메뉴</a></li>
+                    <li><a href="#offers">특별 할인</a></li>
+                    <li><a href="#testimonials">리뷰</a></li>
+                    <li><a href="#contact">연락처</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>당신의 입맛을 사로잡을<br>최고의 피자를 경험하세요!</h1>
+            <p>신선한 재료와 장인의 손길로 빚어낸, 한 조각의 완벽함.</p>
+            <a href="#menu" class="btn">메뉴 보러가기</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>저희는 어떤 피자 가게인가요?</h2>
+            <div class="content">
+                <div class="text-block">
+                    <h3>신선함에 대한 열정</h3>
+                    <p>저희 가게는 매일 아침 엄선된 가장 신선한 재료만을 고집합니다. 갓 수확한 토마토로 만든 소스, 최고급 모차렐라 치즈, 그리고 직접 반죽하여 12시간 이상 저온 숙성시킨 도우까지, 모든 것이 완벽한 피자를 위한 저희의 약속입니다.</p>
+                    <p>고객 여러분의 식탁에 오르기까지 모든 과정에서 품질과 신선도를 최우선으로 생각하며, 자연의 맛 그대로를 전달하기 위해 노력합니다.</p>
+                </div>
+                <div class="text-block">
+                    <h3>수십 년 장인의 비법</h3>
+                    <p>저희의 피자는 단순한 음식을 넘어 예술입니다. 수십 년간 피자를 만들어 온 장인의 손길로, 완벽한 도우의 굽기와 재료의 조화를 찾아내었습니다. 전통적인 이탈리안 피자 조리법에 현대적인 감각을 더해, 어디서도 맛볼 수 없는 독특하고 깊이 있는 풍미를 선사합니다.</p>
+                    <p>한 조각 한 조각에 담긴 장인의 정성과 열정을 직접 느껴보세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>환상의 피자 메뉴</h2>
+            <p>저희의 시그니처 피자부터 클래식한 맛, 그리고 특별한 조합까지 다양한 선택지를 만나보세요.</p>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>마르게리타 피자</h3>
+                    <p>신선한 토마토 소스, 부드러운 모차렐라 치즈, 향긋한 바질이 어우러진 이탈리아의 대표적인 클래식 피자. 심플함 속에 완벽한 조화를 이룹니다.</p>
+                    <div class="price">₩18,000</div>
+                </div>
+                <div class="menu-item">
+                    <h3>페퍼로니 딜라이트</h3>
+                    <p>매콤 짭짤한 페퍼로니가 가득! 풍부한 치즈와 페퍼로니의 환상적인 조합이 입안 가득 즐거움을 선사합니다. 남녀노소 누구나 좋아하는 베스트셀러.</p>
+                    <div class="price">₩21,000</div>
+                </div>
+                <div class="menu-item">
+                    <h3>불고기 바베큐 피자</h3>
+                    <p>한국인의 입맛에 맞춘 특제 불고기 토핑과 달콤 짭짤한 바베큐 소스가 어우러진 퓨전 피자. 양파와 버섯이 풍미를 더합니다.</p>
+                    <div class="price">₩23,000</div>
+                </div>
+                <div class="menu-item">
+                    <h3>트리플 치즈 피자</h3>
+                    <p>모차렐라, 체다, 고르곤졸라 세 가지 치즈의 풍부한 맛을 한 번에! 고소하고 진한 치즈의 향연을 즐겨보세요. 치즈 러버를 위한 최고의 선택.</p>
+                    <div class="price">₩20,000</div>
+                </div>
+                <div class="menu-item">
+                    <h3>쉬림프 갈릭 피자</h3>
+                    <p>탱글탱글한 새우와 알싸한 마늘, 그리고 신선한 채소의 조화. 해산물과 피자의 이색적인 만남이 특별한 미식 경험을 제공합니다.</p>
+                    <div class="price">₩24,000</div>
+                </div>
+                <div class="menu-item">
+                    <h3>베지터블 가든 피자</h3>
+                    <p>다양한 제철 채소들이 가득! 신선하고 건강한 맛을 선호하는 분들을 위한 피자입니다. 비건 옵션 가능.</p>
+                    <div class="price">₩19,000</div>
+                </div>
+            </div>
+            <p style="margin-top: 50px; font-size: 1.1rem; color: #555;">모든 피자는 수제 도우와 신선한 재료로 주문과 동시에 조리됩니다.</p>
+        </div>
+    </section>
+
+    <section id="offers" class="offers">
+        <div class="container">
+            <h2>놓칠 수 없는 특별 할인!</h2>
+            <p>환상의 피자에서 준비한 고객님을 위한 특별한 혜택!</p>
+            <div class="offer-card">
+                <h3>매주 화요일, 1+1 피자 데이!</h3>
+                <p>매주 화요일, 모든 피자를 주문하시면 동일하거나 낮은 가격의 피자 한 판을 무료로 드립니다. 친구, 가족과 함께 즐거운 피자 파티를 즐겨보세요!</p>
+                <p><em>(온라인 주문 및 방문 포장에 한함. 특정 메뉴 제외될 수 있음.)</em></p>
+            </div>
+            <div class="offer-card">
+                <h3>첫 주문 10% 할인</h3>
+                <p>저희 가게에 처음 방문해 주시는 모든 고객께 첫 주문 시 총 금액에서 10% 할인을 제공합니다. 지금 바로 경험해보세요!</p>
+                <p><em>(쿠폰 코드: FIRSTPIZZA)</em></p>
+            </div>
+            <div class="offer-card">
+                <h3>단체 주문 시 무료 음료 제공</h3>
+                <p>5만 원 이상 단체 주문 시, 콜라 1.25L 또는 사이다 1.25L 중 한 가지를 무료로 드립니다. 파티나 모임에 안성맞춤!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>고객님의 솔직한 리뷰</h2>
+            <p>저희 피자를 사랑해주시는 고객님들의 소중한 이야기입니다.</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"인생 피자입니다! 도우가 정말 쫄깃하고 토핑도 아낌없이 올려주셔서 감동했어요. 재료가 신선한 게 바로 느껴집니다. 다음에도 꼭 여기서 시킬 거예요!"</p>
+                    <p class="author">김지혜 고객님</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"아이들이 너무 좋아해요. 특히 불고기 피자는 최고! 배달도 빠르고 따뜻하게 와서 좋아요. 믿고 먹는 피자 맛집입니다. 강력 추천해요!"</p>
+                    <p class="author">박선우 고객님</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"매번 새로운 메뉴가 기대됩니다. 이번 쉬림프 갈릭 피자도 정말 맛있었어요. 재료의 신선함과 맛의 조화가 완벽해요. 벌써 다음 주문이 기다려지네요."</p>
+                    <p class="author">이민준 고객님</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"가족 외식으로 자주 방문하는데, 늘 만족합니다. 직원분들도 친절하시고, 매장 분위기도 좋아요. 피자 맛은 말할 것도 없죠. 언제나 최고예요!"</p>
+                    <p class="author">최유진 고객님</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>저희에게 연락하세요!</h2>
+            <p>궁금한 점이 있으시거나 주문을 원하시면 언제든지 연락 주세요.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>주소</h3>
+                    <p>서울특별시 강남구 테헤란로 123 피자빌딩 1층</p>
+                    <p>(매장 내 식사 및 포장 가능)</p>
+                </div>
+                <div class="contact-item">
+                    <h3>전화</h3>
+                    <p>주문 전화: 02-1234-5678</p>
+                    <p>문의 전화: 02-9876-5432</p>
+                    <p><em>(운영 시간 내 문의 가능)</em></p>
+                </div>
+                <div class="contact-item">
+                    <h3>영업 시간</h3>
+                    <p>월-금: 오전 11:00 - 오후 10:00</p>
+                    <p>토-일: 오전 11:00 - 오후 11:00</p>
+                    <p><em>(연중무휴, 공휴일 정상 영업)</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 환상의 피자. 모든 권리 보유.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
